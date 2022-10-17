@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container" style="padding-top:10px;">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel-title">Delete Student</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" style="margin-left:50px;margin-right:50px;">
+                <div class="row">
+                    <h2>Are you sure you want to delete?</h2>
+                    <form action="studentDelete" method="post">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary" value="DELETE" name="submit_button">Delete</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-primary" value="CANCEL" name="submit_button">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

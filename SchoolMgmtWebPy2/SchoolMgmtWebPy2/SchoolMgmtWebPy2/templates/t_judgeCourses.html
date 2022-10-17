@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container" style="padding-top:10px;">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel-title">Your Courses</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" style="margin-left:50px;margin-right:50px;">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered">
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col" class="text-center">Category</th>
+                                <th scope="col" class="text-center">Classname</th>
+                            </tr>
+                            {% if courses %}
+                            {% for course in courses %}
+                            <tr>
+                                <td>
+                                    <form action="judgeCourses" method="POST">
+                                        <input type="hidden" id="cid" name="cid" value="{{course[0]}}">
+                                        <input type="hidden" id="classname" name="classname" value="{{course[2]}}">
+                                        <button type="submit" class="btn" value="REPORT" name="submit_button">
+                                            Judge Report
+                                        </button>
+                                        <button type="submit" class="btn" value="TEST" name="submit_button">
+                                            Judge Test
+                                        </button>
+                                    </form>
+                                </td>
+                                <td style="text-align:center;">{{course[7]}}</td>
+                                <td style="text-align:center;">{{course[2]}}</td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

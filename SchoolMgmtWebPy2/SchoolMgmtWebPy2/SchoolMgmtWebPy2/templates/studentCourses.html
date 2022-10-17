@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container body">
+    <div class="row">
+        <div class="panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="panel-title">Your Courses</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col" class="text-center">Classname</th>
+                                <th scope="col" class="text-center">Textbook</th>
+                                <th scope="col" class="text-center">Size</th>
+                                <th scope="col" class="text-center">RoomNo</th>
+                                <th scope="col" class="text-center">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if courses %}
+                            {% for course in courses %}
+                            <tr>
+                                <td>
+                                    <form action="studentCourses" method="post">
+                                        <input type="hidden" id="cid" name="cid" value="{{course[0]}}" />
+                                        <input type="hidden" id="classname" name="classname" value="{{course[2]}}" />
+                                        <input type="hidden" id="time" name="time" value="{{course[8]}}" />
+
+                                        <button type="submit" onclick="clicked(event)" name="submit_button" value="DEL">
+                                            Drop
+                                        </button>
+                                        <button type="submit" name="submit_button" value="REPORT">
+                                            Reports
+                                        </button>
+                                        <button type="submit" name="submit_button" value="TEST">
+                                            Tests
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>{{course[2]}}</td>
+                                <td>{{course[3]}}</td>
+                                <td>{{course[5]}}/{{course[4]}}</td>
+                                <td>{{course[6]}}</td>
+                                <td>{{course[8]}}</td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function clicked(e) {
+        if (!confirm('Are you sure?')) {
+            e.preventDefault();
+        }
+    }
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container" style="padding-top:10px;">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel-title">{{classname}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" style="margin-left:50px;margin-right:50px;">
+                <div class="row">
+                    <form action="sReportList" method="post">
+                        <table class="table table-bordered" id="orders">
+                            <tr>
+                                <th width="10%" class="text-center">Report</th>
+                                <th width="30%" class="text-center">Task</th>
+                            </tr>
+                            {% if reports %}
+                            {% for report in reports %}
+                            <tr>
+                                <td>
+                                    <input type="hidden" name="reportid" value="{{report[0]}}" />
+                                    <button type="submit" class="btn btn-primary">Do Report</button>
+                                </td>
+                                <td>{{report[5]}}</td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

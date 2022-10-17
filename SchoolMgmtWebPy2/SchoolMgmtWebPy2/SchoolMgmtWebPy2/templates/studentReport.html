@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container" style="padding-top:10px;">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel-title">{{classname}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" style="margin-left:50px;margin-right:50px;">
+                <div class="row">
+                    <form action="studentReport" method="post">
+                        <input type="hidden" id="reportid" name="reportid" value="{{report[0]}}">
+                        <p>Title: {{report[4]}}</p>
+                        <p>Task: {{report[5]}}</p>
+
+                        <p>Answer: </p><textarea type="text" name="answer" rows="3" cols="100" maxlength="2000" placeholder="Enter text area..."> </textarea>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-4 col-sm-offset-4">
+                                    <button type="submit" name="submit_button" id="submit_button" class="form-control btn btn-primary" value="REPORT">FINISH</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

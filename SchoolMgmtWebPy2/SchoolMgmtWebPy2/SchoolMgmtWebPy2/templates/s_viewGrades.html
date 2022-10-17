@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container" style="padding-top:10px;">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="panel-title">{{student.FName}} {{student.LName}}'s Grades</div>
+                    </div>
+                    <div class="col-sm-3">
+                        Student ID: {{student.SID}}
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" style="margin-left:50px;margin-right:50px;">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <tr>
+                            <th scope="col" class="text-center">Class</th>
+                            <th scope="col" class="text-center">Grade</th>
+                        </tr>
+                        {% if grades %}
+                        {% for grade in grades %}
+                        <tr>
+                            <td style="text-align:center">{{grade[0]}}</td>
+                            <td style="text-align:center">{{grade[1]}}</td>
+                        </tr>
+                        {% endfor%}
+                        {% endif %}
+                    </table>
+                    <h2 style="text-align:center">GPA: {{GPA}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

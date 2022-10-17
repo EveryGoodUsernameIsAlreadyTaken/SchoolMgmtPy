@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container body">
+    <div class="row">
+        <div class="panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="panel-title">Modify Teacher</div>
+                    </div>
+                    <div class="col-sm-3">
+                        Teacher ID: {{teacher.TID}}
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form action="teacherModify" method="post">
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            Username:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="username" id="username" class="form-control" value="{{teacher.User}}">
+                                        </div>
+                                        <div class="col-sm-2 text-right">
+                                            Password:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="password" id="password" class="form-control" value="{{teacher.Pass}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            First Name:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="firstname" id="firstname" class="form-control" value="{{teacher.FName}}">
+                                        </div>
+                                        <div class="col-sm-2 text-right">
+                                            Last Name:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="lastname" id="lastname" class="form-control" value="{{teacher.LName}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            Department:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="department" id="department" class="form-control" value="{{teacher.Dptmt}}">
+                                        </div>
+                                        <div class="col-sm-2 text-right">
+                                            College:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="college" id="college" class="form-control" value="{{teacher.College}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            Subjects:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="subjects" id="subjects" class="form-control" value="{{teacher.Subj}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            Email:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="email" name="email" id="email" class="form-control" value="{{teacher.Email}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            Phone Number:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="phoneno" id="phoneno" class="form-control" value="{{teacher.PhoneNo}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            Website:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="website" id="website" class="form-control" value="{{teacher.Website}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-4 col-sm-offset-4">
+                                                <button type="submit" class="form-control btn btn-primary">Modify</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css" />
+
+    <style type="text/css">
+        .body {
+            margin-top: 90px;
+        }
+
+        .dob {
+            padding: 1em;
+        }
+
+        .date {
+            padding: 5px;
+        }
+
+        .pad {
+            padding-right: 75px;
+            padding-left: 75px;
+        }
+
+        .pad2 {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .center {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .panel-login {
+            border-color: #ccc;
+            -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+            -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+        }
+
+            .panel-login > .panel-heading {
+                color: #00415d;
+                background-color: #fff;
+                border-color: #fff;
+                text-align: center;
+            }
+
+                .panel-login > .panel-heading a {
+                    text-decoration: none;
+                    color: #666;
+                    font-weight: bold;
+                    font-size: 15px;
+                    -webkit-transition: all 0.1s linear;
+                    -moz-transition: all 0.1s linear;
+                    transition: all 0.1s linear;
+                }
+
+                    .panel-login > .panel-heading a.active {
+                        color: #029f5b;
+                        font-size: 18px;
+                    }
+
+                .panel-login > .panel-heading hr {
+                    margin-top: 10px;
+                    margin-bottom: 0px;
+                    clear: both;
+                    border: 0;
+                    height: 1px;
+                    background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+                    background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+                    background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+                    background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+                }
+
+            .panel-login input[type="text"], .panel-login input[type="email"], .panel-login input[type="password"] {
+                height: 45px;
+                border: 1px solid #ddd;
+                font-size: 16px;
+                -webkit-transition: all 0.1s linear;
+                -moz-transition: all 0.1s linear;
+                transition: all 0.1s linear;
+            }
+
+            .panel-login input:hover,
+            .panel-login input:focus {
+                outline: none;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                border-color: #ccc;
+            }
+
+        .btn-register {
+            background-color: #1CB94E;
+            outline: none;
+            color: #fff;
+            font-size: 14px;
+            height: auto;
+            font-weight: normal;
+            padding: 14px 0;
+            text-transform: uppercase;
+            border-color: #1CB94A;
+        }
+
+            .btn-register:hover,
+            .btn-register:focus {
+                color: #fff;
+                background-color: #1CA347;
+                border-color: #1CA347;
+            }
+    </style>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    {% if category == 'error'%}
+    <div class="alert alert-danger" id="msg-alert">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success" id="msg-alert">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+    {% endfor%}
+    {% endif %}
+    {% endwith %}
+
+    <div class="container body">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 pad">
+                <div class="panel panel-login">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="#" class="active" id="student-page">Student</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#" id="teacher-page">Teacher</a>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <form id="student-register" action="register" method="post">
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Firstname" value="">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Lastname" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group dob center">
+                                        <input type="date" id="dob" name="dob"
+                                               placeholder="2022/01/01" class="date pad2"
+                                               min="1900/01/01" max="2022/01/01" format="dd/mm/yyyy">
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="addr1" id="addr2" class="form-control" placeholder="Address 1" value="">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="addr2" id="addr2" class="form-control" placeholder="Address 2 (optional)" value="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="city" id="city" class="form-control" placeholder="City" value="">
+                                        </div>
+                                        <div class="col-sm-6 form-group center">
+                                            <label for="state">State:</label>
+                                            <select name="state" id="state">
+                                                <option value="AL">AL</option>
+                                                <option value="AK">AK</option>
+                                                <option value="AZ">AZ</option>
+                                                <option value="AR">AR</option>
+                                                <option value="CA">CA</option>
+                                                <option value="CO">CO</option>
+                                                <option value="CT">CT</option>
+                                                <option value="DE">DE</option>
+                                                <option value="FL">FL</option>
+                                                <option value="GA">GA</option>
+                                                <option value="HI">HI</option>
+                                                <option value="ID">ID</option>
+                                                <option value="IL">IL</option>
+                                                <option value="IN">IN</option>
+                                                <option value="IA">IA</option>
+                                                <option value="KS">KS</option>
+                                                <option value="KY">KY</option>
+                                                <option value="LA">LA</option>
+                                                <option value="ME">ME</option>
+                                                <option value="MD">MD</option>
+                                                <option value="MA">MA</option>
+                                                <option value="MI">MI</option>
+                                                <option value="MN">MN</option>
+                                                <option value="MS">MS</option>
+                                                <option value="MO">MO</option>
+                                                <option value="MT">MT</option>
+                                                <option value="NE">NE</option>
+                                                <option value="NV">NV</option>
+                                                <option value="NH">NH</option>
+                                                <option value="NJ">NJ</option>
+                                                <option value="NM">NM</option>
+                                                <option value="NY">NY</option>
+                                                <option value="NC">NC</option>
+                                                <option value="ND">ND</option>
+                                                <option value="OH">OH</option>
+                                                <option value="OK">OK</option>
+                                                <option value="OR">OR</option>
+                                                <option value="PA">PA</option>
+                                                <option value="RI">RI</option>
+                                                <option value="SC">SC</option>
+                                                <option value="SD">SD</option>
+                                                <option value="TN">TN</option>
+                                                <option value="TX">TX</option>
+                                                <option value="UT">UT</option>
+                                                <option value="VT">VT</option>
+                                                <option value="VA">VA</option>
+                                                <option value="WA">WA</option>
+                                                <option value="WV">WV</option>
+                                                <option value="WI">WI</option>
+                                                <option value="WY">WY</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="zip" id="zip" class="form-control" placeholder="Zip" value="">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="phoneno" id="phoneno" class="form-control" placeholder="Phone Number" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <button type="submit" name="register" id="register" class="form-control btn btn-register" value="Student">Register</button>
+                                            </div>
+                                            <div class="col-sm-6 center">
+                                                Sign up? <a href="{{ url_for('login')}}">Login</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <form id="teacher-register" action="register" method="post" role="form" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Firstname" value="">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Lastname" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Email" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="department" id="department" class="form-control" placeholder="Department" value="">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="college" id="college" class="form-control" placeholder="College" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject" value="">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="phoneno" id="phoneno" class="form-control" placeholder="Phone Number" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" name="website" id="website" class="form-control" placeholder="Website" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <button type="submit" name="register" id="register" class="form-control btn btn-register" value="Teacher">Register</button>
+                                            </div>
+                                            <div class="col-sm-6 center">
+                                                Sign up? <a href="{{ url_for('login')}}">Login</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("#msg-alert").fadeTo(2000, 500).slideUp(500, function () {
+            $("#msg-alert").slideUp(500);
+        });
+        $(function () {
+            $('#student-page').click(function (e) {
+                $("#student-register").delay(100).fadeIn(100);
+                $("#teacher-register").fadeOut(100);
+                $('#teacher-page').removeClass('active');
+                $(this).addClass('active');
+                e.preventDefault();
+            });
+            $('#teacher-page').click(function (e) {
+                $('#teacher-register').delay(100).fadeIn(100);
+                $("#student-register").fadeOut(100);
+                $('#student-page').removeClass('active');
+                $(this).addClass('active');
+                e.preventDefault();
+            });
+
+        });
+
+    </script>
+</body>
+</html>

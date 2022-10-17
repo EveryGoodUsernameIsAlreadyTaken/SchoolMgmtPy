@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel-title">Make Course</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" style="margin-left:50px; margin-right:50px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form action="makeCourse" method="post">
+                            <div class="row">
+                                <div class="col-lg-10 col-lg-offset-1">
+                                    <div class="row">
+                                        <div class="col-sm-2 form-group">
+                                            Classname:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="classname" id="classname" class="form-control" placeholder="Classname" value="">
+                                        </div>
+                                        <div class="col-sm-2 form-group">
+                                            Textbook:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="textbook" id="textbook" class="form-control" placeholder="Textbook">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-2 form-group">
+                                            Category:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="category" id="category" class="form-control" placeholder="Category" value="">
+                                        </div>
+                                        <div class="col-sm-2 form-group">
+                                            RoomNo:
+                                        </div>
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" name="roomno" id="roomno" class="form-control" placeholder="Room Number" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="margin:15px;">
+                                        <div class="col-sm-6 form-group" style="text-align:center;">
+                                            <label for="department">Departments:</label>
+
+                                            <select name="department" id="department">
+                                                {% if departments %}
+                                                {% for dptmt in departments %}
+                                                <option value="{{dptmt[0]}}">
+                                                    {{dptmt[1]}}
+                                                </option>
+                                                {% endfor%}
+                                                {% endif %}
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6 form-group" style="text-align:center;">
+                                            <label for="maxsize">MaxSize (20-500):</label>
+                                            <input type="number" id="maxsize" name="maxsize"
+                                                   min="20" max="500">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div style="text-align: center; margin: 15px;">
+                                            <label for="time">Class Time:</label>
+                                            <input type="time" id="time" name="time" min="06:00" max="24:00" required>
+                                            <small>Choose between 6 AM - 12 AM</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:20px;">
+                                        <div class="row">
+                                            <div class="col-sm-4 col-sm-offset-4">
+                                                <button type="submit" name="makecourse" id="makecourse" class="form-control btn btn-primary">Make Course</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container body">
+    <div class="row">
+        <div class="panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="panel-title">Student Info</div>
+                    </div>
+                    <div class="col-sm-3">
+                        Student ID: {{student.SID}}
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        Username: {{student.User}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        Password: {{student.Pass}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        Full Name: {{student.FName}} {{student.LName}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        Date of Birth: {{student.DOB}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        Address 1: {{student.Addr1}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        Address 2: {{student.Addr2}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        City: {{student.City}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        State: {{student.State}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        Zip: {{student.Zip}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        Email: {{student.Email}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        Phone Number: {{student.PhoneNo}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        GPA: {{student.GPA}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        Fixed: {{student.Fixed}}
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-3 col-sm-offset-9">
+                                        <a href="{{url_for('studentModify')}}">Modify</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

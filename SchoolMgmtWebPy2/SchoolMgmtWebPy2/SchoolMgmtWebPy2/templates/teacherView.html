@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container body">
+    <div class="row">
+        <div class="panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="panel-title">Teacher Info</div>
+                    </div>
+                    <div class="col-sm-3">
+                        Teacher ID: {{teacher.TID}}
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        Username: {{teacher.User}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        Password: {{teacher.Pass}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        Full Name: {{teacher.FName}} {{teacher.LName}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        Email: {{teacher.Email}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        Department: {{teacher.Dptmt}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        College: {{teacher.College}}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        Subjects: {{teacher.Subj}}
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        Phone Number: {{teacher.PhoneNo}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        Website: <a href="{{teacher.Website}}">{{teacher.Website}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
